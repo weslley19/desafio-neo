@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     # My Apps
     'core',
     'rest_framework',
-    'django-filter',
 ]
 
 MIDDLEWARE = [
