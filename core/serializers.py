@@ -9,10 +9,10 @@ class AddressSerializer(serializers.ModelSerializer):
 
 
 class ClientSerializer(serializers.ModelSerializer):
-    address = AddressSerializer(required=True)
+    # address = AddressSerializer(required=True)
     class Meta:
         model = Client
-        fields = ['id', 'name', 'active', 'address']
+        fields = ['id', 'name', 'active']
 
 
 class UserSerializer(serializers.ModelSerializer):

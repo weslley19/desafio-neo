@@ -9,7 +9,10 @@ class Base(models.Model):
 
 class Client(Base):
     name = models.CharField('Nome', max_length=255, blank=False)
-    address_id = models.ForeignKey('Address', on_delete=models.CASCADE, blank=True) 
+    address_client = models.CharField('Endereço', max_length=255, blank=False, default='')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Cliente'
@@ -21,7 +24,9 @@ class User(Base):
     birthdate = models.DateField('Data de Nascimento')
     cpf = models.CharField('CPF', max_length=15, unique=True)
     client_id = models.ForeignKey('Client', on_delete=models.CASCADE, blank=False)
-    address_id = models.ForeignKey('Address', on_delete=models.CASCADE, blank=False)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Usuário'
@@ -32,6 +37,9 @@ class Address(Base):
     user_id = models.ForeignKey('User', on_delete=models.CASCADE, blank=True)
     local = models.CharField('Local', max_length=255, default='')
     is_main = models.BooleanField('Endereço Principal?')
+
+    def __str__(self):
+        return self.local
 
     class Meta:
         verbose_name = 'Endereço'
