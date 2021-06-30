@@ -1,1 +1,2 @@
-web: gunicorn django1.wsgi --log-file -
+release: python3 manage.py migrate
+web: gunicorn desafio.wsgi --preload --log-file -
