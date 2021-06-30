@@ -104,9 +104,41 @@ Resposta:
 
 ### Dados do usuário:
 
-O endpoint de dados do usuário é útil para pegar os dados como *nome* , *data de nascimento*, entre outros dados referentes ao usuário vinculado ao token de acesso.
+O endpoint de dados do usuário é útil para pegar os dados como *nome*, *data de nascimento*, entre outros dados referentes ao usuário vinculado ao token de acesso.
 
 - Endpoint: **/api/user/**
+- Allowed method: GET
+- Authorization necessária
+
+Para pegar os dados do usuário deve ser feito uma requisição com o verbo http GET ao endpoint, e no header da requisição deve conter o campo de Authorization com o token de acesso Bearer válido do usuário.
+
+*GET*:
+
+Header
+
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIi...
+
+Resposta:
+
+*status_code*: 200
+```json
+{
+    "id": 6,
+    "name": "Bob",
+    "birthdate": "2000-04-04",
+    "cpf": "342334",
+    "client_id": 5,
+    "created_at": "2021-06-29T22:01:34.272427-03:00",
+    "updated_at": "2021-06-29T21:16:48.035644-03:00",
+    "active": true
+}
+```
+
+### Usuário especifico:
+
+O endpoint para mostrar dados de um usuário em especifico é útil para pegar/atualizar os dados de um usuário como *nome*, *data de nascimento*, *cpf*, entre outros dados referentes ao usuário de id igual ao repassado na url.
+
+- Endpoint: **/api/user/{user_id}/**
 - Allowed method: GET
 - Authorization necessária
 
@@ -134,15 +166,16 @@ Resposta:
 }
 ```
 
-### Usuário especifico:
 
-O endpoint para mostrar dados de um aluno em especifico é útil para pegar/atualizar os dados de um aluno como *nome* , *data de nascimento*, *cpf*, entre outros dados referentes ao aluno de id igual ao repassado na url.
+### Dados do cliente:
 
-- Endpoint: **/api/user/{user_id}/**
+O endpoint de dados do cliente é útil para pegar os dados como *nome*, *local*, entre outros dados referentes ao cliente.
+
+- Endpoint: **/api/client/**
 - Allowed method: GET
 - Authorization necessária
 
-Para pegar os dados do usuário deve ser feito uma requisição com o verbo http GET ao endpoint, e no header da requisição deve conter o campo de Authorization com o token de acesso JWT válido do usuário.
+Para pegar os dados do cliente deve ser feito uma requisição com o verbo http GET ao endpoint, e no header da requisição deve conter o campo de Authorization com o token de acesso Bearer válido do cliente.
 
 *GET*:
 
@@ -155,13 +188,42 @@ Resposta:
 *status_code*: 200
 ```json
 {
-    "id": 6,
-    "name": "Bob",
-    "birthdate": "2000-04-04",
-    "cpf": "342334",
-    "client_id": 5,
-    "created_at": "2021-06-29T22:01:34.272427-03:00",
-    "updated_at": "2021-06-29T21:16:48.035644-03:00",
+    "id": 5,
+    "name": "Unimed Teresina02",
+    "address_client": "Teresina",
+    "created_at": "2021-06-29T21:11:10.904421-03:00",
+    "updated_at": "2021-06-29T21:11:10.904476-03:00",
+    "active": true
+}
+```
+
+### Dados de endereço:
+
+O endpoint de dados de endereço é útil para pegar os dados como *user_id*, *local*, *is_main* entre outros dados referentes ao endereço vinculado a um usuário
+
+- Endpoint: **/api/address/**
+- Allowed method: GET
+- Authorization necessária
+
+Para pegar os dados de endereço de um usuário deve ser feito uma requisição com o verbo http GET ao endpoint, e no header da requisição deve conter o campo de Authorization com o token de acesso Bearer válido do usuário.
+
+*GET*:
+
+Header
+
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIi...
+
+Resposta:
+
+*status_code*: 200
+```json
+{
+    "id": 7,
+    "user_id": 6,
+    "local": "Teresina",
+    "is_main": true,
+    "created_at": "2021-06-29T21:17:26.314467-03:00",
+    "updated_at": "2021-06-29T21:17:26.314514-03:00",
     "active": true
 }
 ```
