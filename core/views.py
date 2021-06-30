@@ -3,6 +3,7 @@ from .models import Client, User, Address
 from .serializers import ClientSerializer, UserSerializer, AddressSerializer
 from rest_framework import viewsets
 from rest_framework import permissions
+from django.http import JsonResponse
 
 
 class ClientViewSet(viewsets.ModelViewSet):
